@@ -14,10 +14,13 @@ class StudentCountController extends Controller
     }
 
     public function create(Request $request){
-        $validated = $request->validate([
-            "count"=> "required"
+        // $validated = $request->validate([
+        //     "count"=> "required"
+        // ]);
+        StudentCount::create([
+            "count"=> $request->studentcount,
         ]);
-        StudentCount::create($request->all());
         return redirect("admin/studentcount");
+        // return "Hello I'm create ";
     }
 }

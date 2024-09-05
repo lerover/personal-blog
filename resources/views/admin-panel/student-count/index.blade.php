@@ -24,12 +24,12 @@
 
             @endif
 
-            <form action="{{url('admin/studentcount/create')}}" method="get">
+            <form action="{{url('admin/studentcount/create')}}" method="post">
                 @csrf
                 <div class="input-group">
-                    <input type="number" name="student-count" class="form-control" placeholder="Input new student count">
+                    <input type="number" name="studentcount" class="form-control" placeholder="Input new student count">
                     <button type="submit" class="btn btn-primary">Confirm</button>
-                    @error('student-count')
+                    @error('studentcount')
                             <small class="text-danger">{{$message}}</small>
                         @enderror
                 </div>

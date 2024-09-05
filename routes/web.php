@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
 
     //student count route 
     Route::get('/studentcount', [StudentCountController::class, 'index']);
-    Route::get('/studentcount/create', [StudentCountController::class,'create']);
+    Route::post('/studentcount/create', [StudentCountController::class,'create']);
 });
 
 Auth::routes();

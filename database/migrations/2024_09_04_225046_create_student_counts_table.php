@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('student_counts', function (Blueprint $table) {
             $table->id();
+            $table->integer('count');
             $table->timestamps();
         });
     }
