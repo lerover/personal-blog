@@ -27,31 +27,42 @@
             <form action="{{url('admin/studentcount/create')}}" method="post">
                 @csrf
                 <div class="input-group">
-                    <input type="number" name="studentcount" class="form-control" placeholder="Input new student count">
-                    <button type="submit" class="btn btn-primary">Confirm</button>
-                    @error('studentcount')
+                    <input type="number" name="studentcount" class="form-control @error('studentcount') is-invalid @enderror" placeholder="Input new student count">
+                    <button type="submit" class="btn btn-primary ">Confirm</button>
+
+                </div>
+                @error('studentcount')
                             <small class="text-danger">{{$message}}</small>
                         @enderror
-                </div>
             </form>
             <table class="table table-hover mt-3">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Count</th>
-                        <th>Actions</th>
+                        
+                        <th>Student Amount</th>
                     </tr>
 
                 </thead>
 
                 <tbody>
+                    @php
+                        $total = 0
+                    @endphp
                     @foreach ($students as $student)
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                        @php
+                            $total+=$student->count;
+                            
+                        @endphp
+
                     @endforeach
+
+                    <tr>
+                        <td colspan="2">
+                            @php
+                                echo $total;
+                            @endphp
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

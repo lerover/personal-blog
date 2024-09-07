@@ -48,7 +48,7 @@
                 <!-- navigation -->
                 <nav class="navbar navbar-expand-lg bg-body-tertiary navbarmenu ">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Personal Blog</a>
+                        <a class="navbar-brand" href="{{url('admin/dashboard')}}">Personal Blog</a>
 
 
                         <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
@@ -92,6 +92,10 @@
                         <a href="{{url('admin/projects')}}">Projects</a>
 
                         <a href="{{url('admin/studentcount')}}">Students</a>
+
+                        <a href="{{url('admin/categories/')}}">Post Category</a>
+                    
+                        <a href="{{url('admin/posts/')}}">Posts</a>
                     </div>
 
                     <!-- main content -->

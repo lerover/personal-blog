@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <!-- CUSTOM CSS  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href={{asset("css/style.css")}}>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-md-2"></div>
                         <div class="col-md-4 d-flex justify-content-center align-items-center">
-                            <img src="images/profile.jpg" id="headerImg" alt="">
+                            <img src={{asset("images/profile.jpg")}} id="headerImg" alt="">
                         </div>
                         <div class="col-md-4 d-flex justify-content-center align-items-center">
                             <div>
@@ -47,8 +47,8 @@
 
                 <!-- NAVBAR SEXTION -->
                 <div class="position-sticky" id="navbar">
-                    <a href="index.html">HOME</a>
-                    <a href="posts.html">BLOGS</a>
+                    <a href="{{url('/')}}">HOME</a>
+                    <a href="{{url('/blogs')}}">BLOGS</a>
 
                     @if (Auth::check())
                         <a href="{{url('/register')}}" class="float-end">{{strtoupper(Auth::user()->name)}}</a>
@@ -109,7 +109,7 @@
         </div>
     </div>
     <!-- CUSTOMS JS  -->
-    <script src="js/main.js"></script>
+    <script src={{asset("js/main.js")}}></script>
     <!-- BOOTSTRAP JS  -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

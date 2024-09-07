@@ -14,9 +14,10 @@ class StudentCountController extends Controller
     }
 
     public function create(Request $request){
-        // $validated = $request->validate([
-        //     "count"=> "required"
-        // ]);
+        $request->validate([
+            "studentcount"=> "required"
+        ]);
+
         StudentCount::create([
             "count"=> $request->studentcount,
         ]);

@@ -36,7 +36,20 @@
                 <div class="total-student">
                   <i class="fas fa-users"></i>
                   <br>
-                  <strong>2500</strong>
+
+                  @php
+          $total = 0
+        @endphp
+                  @foreach ($studentcounts as $studentcount)
+                    @php
+            $total += $studentcount->count;
+
+            @endphp
+
+          @endforeach
+                  <strong>
+                    {{$total}}
+                  </strong>
                   <p class="text-center">Total Students</p>
                 </div>
               </div>
@@ -63,7 +76,7 @@
         </div>
       @endforeach
             <div class="mt-5">
-            {{$skills->links("pagination::bootstrap-5")}}
+              {{$skills->links("pagination::bootstrap-5")}}
             </div>
 
           </div>
@@ -76,16 +89,16 @@
       <h2 class="text-center">MY PROJECTS</h2><br>
       <div class="row">
         @foreach ($projects as $project)
-        <div class="col-sm-6 col-md-4 mb-2">
-          <a href="{{$project->url}}" target="_blank">
-            <div class="single-project">
-              <i class="fa fa-project-diagram"></i>
-              <br>
-              <strong>{{$project->name}}</strong>
-            </div>
-          </a>
+      <div class="col-sm-6 col-md-4 mb-2">
+        <a href="{{$project->url}}" target="_blank">
+        <div class="single-project">
+          <i class="fa fa-project-diagram"></i>
+          <br>
+          <strong>{{$project->name}}</strong>
         </div>
-        @endforeach
+        </a>
+      </div>
+    @endforeach
 
       </div>
 
