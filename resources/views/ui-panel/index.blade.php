@@ -44,7 +44,7 @@
                     @php
             $total += $studentcount->count;
 
-            @endphp
+          @endphp
 
           @endforeach
                   <strong>
@@ -109,87 +109,25 @@
         Hey Guys! I warmly welcome you to read some of my blog posts. Here are very interesting and exciting posts you
         can read that i am supporting for you guys!
       </p>
+
       <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <a href="post-details.html">
-            <div class="latest-post">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSY-Fqgt98110_CnRGAMtbzlYAKLsT1EIRqL5b4A9ESe3fhsaym&usqp=CAU"
-                alt="">
-              <small>25 October, 2017 | By YMS </small>
-              <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH SOMEONE</strong></p>
-              <P>
-                Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours
-                in front of their desktops, while delivery people scan bar codes with handhelds and workers in the field
-                stay
-              </P>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a href="post-details.html">
-            <div class="latest-post">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRK2tvT1fAPcQNFpZvDaqmAgxkGCqGWADA0OMwdzULJWRScYI2A&usqp=CAU"
-                alt="">
-              <small>25 October, 2017 | By YMS </small>
-              <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH SOMEONE</strong></p>
-              <P>
-                Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours
-                in front of their desktops, while delivery people scan bar codes with handhelds and workers in the field
-                stay
-              </P>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a href="post-details.html">
-            <div class="latest-post">
-              <img
-                src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg"
-                alt="">
-              <small>25 October, 2017 | By YMS </small>
-              <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH SOMEONE</strong></p>
-              <P>
-                Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours
-                in front of their desktops, while delivery people scan bar codes with handhelds and workers in the field
-                stay
-              </P>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a href="post-details.html">
-            <div class="latest-post">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSQXE_7Go4FovH9bstguTZSXGwPapB5CwcraJtmLQICkJe9weEk&usqp=CAU"
-                alt="">
-              <small>25 October, 2017 | By YMS </small>
-              <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH SOMEONE</strong></p>
-              <P>
-                Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours
-                in front of their desktops, while delivery people scan bar codes with handhelds and workers in the field
-                stay
-              </P>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <a href="post-details.html">
-            <div class="latest-post">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQK60mFUNV8eXgrHZYzJwIKiYTPPhPW_jqFKlUcEcQGvxrF6F21&usqp=CAU"
-                alt="">
-              <small>25 October, 2017 | By YMS </small>
-              <p><strong>SOMETHING JUST LIKE THIS WHEN YOU FALL IN LOVE WITH SOMEONE</strong></p>
-              <P>
-                Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours
-                in front of their desktops, while delivery people scan bar codes with handhelds and workers in the field
-                stay
-              </P>
-            </div>
-          </a>
-        </div>
+      @foreach ($posts as $post)
+        
+          <div class="col-sm-6 col-md-4">
+            <a href={{url('/posts/'.$post->id.'/details')}}>
+              <div class="latest-post">
+                <img
+                  src={{asset('storage/post-image/'.$post->image)}}
+                  alt="">
+                <small>{{date("d-M-Y", strtotime($post->created_at))}} </small>
+                <p><strong>{{$post->title}}</strong></p>
+                <P>
+                  {{$post->content}}
+                </P>
+              </div>
+            </a>
+          </div>
+      @endforeach
       </div>
     </div>
   </div>

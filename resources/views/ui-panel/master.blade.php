@@ -33,7 +33,7 @@
                                 <p class="yms">YE MYINT SOE</p>
                                 <p class="hc">THE HAPPY CODER</p>
                                 <br>
-                                <a href="posts.html">
+                                <a href="{{url('/blogs')}}">
                                     <button class="btn btn-info">
                                         <i class="fa fa-plus-circle"></i>
                                         Explore My Blogs
@@ -111,7 +111,7 @@
     <!-- CUSTOMS JS  -->
     <script src={{asset("js/main.js")}}></script>
     <!-- BOOTSTRAP JS  -->
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
 
 </html>

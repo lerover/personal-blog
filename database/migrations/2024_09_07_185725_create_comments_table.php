@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('post_id');
             $table->integer('user_id');
             $table->longText('text');
+            $table->string('status')->default('show');
             $table->timestamps();
         });
     }

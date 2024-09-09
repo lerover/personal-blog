@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -62,9 +63,18 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show($id)
+    {   
+        $comments = Comment::where("post_id",$id)->get();
+        return view('admin-panel.post.comment',compact('comments'));
+    }
+
+
+    public function showHideComment($id){
+        $comment = Comment::findOrFail($id);    
+
+        $comment->status === 'show' ? $comment->update(['status'=> 'hide']) : $comment->update(['status'=> 'show']);
+        return back();
     }
 
     /**

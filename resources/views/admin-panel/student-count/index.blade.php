@@ -1,5 +1,5 @@
 @extends('admin-panel/master')
-@section('title','Student Count')
+@section('title', 'Student Count')
 @section('content')
 <div class="row">
     <h4 class="col-md-10">Student Count</h4>
@@ -27,18 +27,20 @@
             <form action="{{url('admin/studentcount/create')}}" method="post">
                 @csrf
                 <div class="input-group">
-                    <input type="number" name="studentcount" class="form-control @error('studentcount') is-invalid @enderror" placeholder="Input new student count">
+                    <input type="number" name="studentcount"
+                        class="form-control @error('studentcount') is-invalid @enderror"
+                        placeholder="Input new student count">
                     <button type="submit" class="btn btn-primary ">Confirm</button>
 
                 </div>
                 @error('studentcount')
-                            <small class="text-danger">{{$message}}</small>
-                        @enderror
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
             </form>
             <table class="table table-hover mt-3">
                 <thead>
                     <tr>
-                        
+
                         <th>Student Amount</th>
                     </tr>
 
@@ -49,10 +51,10 @@
                         $total = 0
                     @endphp
                     @foreach ($students as $student)
-                        @php
-                            $total+=$student->count;
-                            
-                        @endphp
+                                        @php
+                                            $total += $student->count;
+
+                                        @endphp
 
                     @endforeach
 

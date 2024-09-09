@@ -30,12 +30,22 @@ class LoginController extends Controller
      */
     // protected $redirectTo = '/';
 
+    public function showLoginForm()
+    {
+        $previousURL = url()->previous();
+        $baseURL = url()->to('/');
+        if($previousURL != $baseURL.'/login'){
+            session()->put('url.intended', $previousURL);
+        }
+        return view("auth.login");
+    }
+
 
     protected function authenticated(Request $request, $user){
         if(Auth::user()->status == 'admin'){
             return redirect('/admin/dashboard');
         }else{
-            return redirect('/');
+             $this->showLoginForm();
         }
     }
 

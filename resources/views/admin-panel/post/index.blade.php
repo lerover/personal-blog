@@ -2,7 +2,7 @@
 @section('title','Post')
 @section('content')
 <div class="row">
-    <h4 class="col-md-10">Projects</h4>
+    <h4 class="col-md-10">Posts</h4>
     <div class="col-md-2">
         <a href="{{url('admin/posts/create')}}" class="btn btn-primary btn-sm col-md-12">Add New +</a>
     </div>
@@ -47,8 +47,8 @@
                                 <img src="{{asset('storage/post-image/'.$post->image)}}" alt="" width="100px">
                             </td>
                             <td>{{$post->title}}</td>
-                            <td>{{$post->content}}</td>
-                            <td style="width:200px">
+                            <td><textarea name="" id="" readonly>{{$post->content}}</textarea></td>
+                            <td>
                             <form action="posts/{{$post->id}}" method="post">
                                     <input type="hidden" name="_method" value="DELETE">
 
@@ -56,7 +56,8 @@
                                     <a href="posts/{{$post->id}}/edit" class="btn btn-success btn-sm">Edit</a>
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure you want to delete?')">Delete</button>
-                                </form>
+                                    <a href={{url('admin/posts/'.$post->id)}} class="btn btn-primary btn-sm">Comments</a>
+                                    </form>
                             </td>
                         </tr>
                     @endforeach

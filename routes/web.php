@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UiController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -11,10 +11,12 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\StudentCountController;
 use App\Http\Controllers\LikeDislikeController;
+
 //skill model
 use App\Models\Skill;
 use App\Models\Project;
 use App\Models\StudentCount;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,12 +33,14 @@ Route::get('/', function () {
     $skills = Skill::paginate(5);
     $projects = Project::all();
     $studentcounts = StudentCount::all();
-    return view('ui-panel.index', compact('skills', 'projects','studentcounts'));
+    $posts = Post::latest()->take(5)->get(); 
+    return view('ui-panel.index', compact('skills', 'projects','studentcounts','posts'));
 });
 Route::get('/posts/{id}/details',[UiController::class,'details']);
 
 Route::post('/post/like',[LikeDislikeController::class,'like']);
 Route::post('/post/dislike',[LikeDislikeController::class,'dislike']);
+Route::post('/post/comment',[CommentController::class,'comment']);
 
 Route::get('/blogs',[UiController::class,'blogs'] );
 
@@ -64,6 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], functio
 
     //Post
     Route::resource('/posts', PostController::class);
+    Route::post('comment/{commentId}/show_hide', [PostController::class,'showHideComment']);
 });
 
 Auth::routes();
