@@ -30,7 +30,7 @@
                             <div>
                                 <p class="hello">HELLO!</p>
                                 <p class="itme">IT'S ME</p>
-                                <p class="yms">YE MYINT SOE</p>
+                                <p class="yms">Win Pyae Hein</p>
                                 <p class="hc">THE HAPPY CODER</p>
                                 <br>
                                 <a href="{{url('/blogs')}}">

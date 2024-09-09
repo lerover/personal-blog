@@ -33,7 +33,7 @@ Route::get('/', function () {
     $skills = Skill::paginate(5);
     $projects = Project::all();
     $studentcounts = StudentCount::all();
-    $posts = Post::latest()->take(5)->get(); 
+    $posts = Post::latest()->take(3)->get(); 
     return view('ui-panel.index', compact('skills', 'projects','studentcounts','posts'));
 });
 Route::get('/posts/{id}/details',[UiController::class,'details']);
@@ -44,6 +44,9 @@ Route::post('/post/comment',[CommentController::class,'comment']);
 
 Route::get('/blogs',[UiController::class,'blogs'] );
 
+Route::get('/search_data',[UiController::class,'search']);
+
+Route::get('/search_posts_by_category/{catId}',[UiController::class,'search_by_category']);
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.index');
 

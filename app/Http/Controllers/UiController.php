@@ -20,7 +20,7 @@ class UiController extends Controller
     public function blogs()
     {
         $categories = Category::all();
-        $posts = Post::all();
+        $posts = Post::latest()->paginate(3);
         return view("ui-panel.posts", compact("categories", "posts"));
     }
 
@@ -41,5 +41,25 @@ class UiController extends Controller
         };
 
         return redirect('/login');
+    }
+
+    public function search(Request $request){
+        $search = $request->search_data;
+        $categories = Category::all();
+        $posts = Post::where('title','like','%'. $search.'%')
+        ->orWhere('content','like','%'. $search.'%')    
+        ->orWhereHas('category',function($category) use($search){
+            $category->where('name','like','%'.$search.'%');
+        })
+        ->paginate(3);
+        return view("ui-panel.posts", compact("categories", "posts"));
+  
+    }
+
+    public function search_by_category($catId){
+        $categories = Category::all();
+        $posts = Post::where('category_id',$catId)->paginate(3);
+        return view("ui-panel.posts", compact("categories", "posts"));
+
     }
 }

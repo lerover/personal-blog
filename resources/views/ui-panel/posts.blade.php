@@ -15,7 +15,7 @@
                             <h5><strong>{{$post->title}}</strong></h5>
                             <br>
                             <p>
-                                {{$post->content}}
+                                {{substr($post->content,0,200)}}<span> ........</span>
                             </p>
                             <a href="{{url('/posts/'.$post->id.'/details')}}">
                                 <button class="btn btn-info">See More <i class="fas fa-angle-double-right"></i> </button>
@@ -23,14 +23,17 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+                {{$posts->links('pagination::bootstrap-5')}}
+
+                </div>
         </div>
         <div class="col-md-4">
             <div class="siderbar">
-                <form action="">
+                <form action="{{url('/search_data')}}" method="get">
+                    @csrf
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <button class="btn btn-success">
+                        <input type="text" name="search_data" class="form-control" placeholder="Search">
+                        <button class="btn btn-success" type="submit">
                             Submit <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -39,7 +42,7 @@
                 <h5>Categories</h5>
                 <ul>
                     @foreach ($categories as $category)
-                        <li><a href="">{{$category->name}}</a></li>
+                        <li><a href="{{url('/search_posts_by_category/'.$category->id)}}">{{$category->name}}</a></li>
                     @endforeach
                 </ul>
             </div>

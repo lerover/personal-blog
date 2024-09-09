@@ -25,6 +25,9 @@
             <table class="table table-hover mt-3">
 
                 <tbody>
+                    @if ($comments->count() <= 0)
+                        {{"No comments here"}}
+                    @else
                     @foreach ($comments as $comment)
                         <tr>
                             <td>
@@ -44,6 +47,7 @@
                             </td>
                         </tr>
                     @endforeach
+                    @endif
 
                     <tr>
                         <td>

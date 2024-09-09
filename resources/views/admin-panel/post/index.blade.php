@@ -39,9 +39,9 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($posts as $post)
+                    @foreach ($posts as $index=> $post)
                         <tr>
-                            <td>{{$post->id}}</td>
+                            <td>{{$index + $posts->firstItem()}}</td>
                             <td>{{$post->category->name}}</td>
                             <td>
                                 <img src="{{asset('storage/post-image/'.$post->image)}}" alt="" width="100px">
@@ -61,6 +61,8 @@
                             </td>
                         </tr>
                     @endforeach
+
+                    {{$posts->links('pagination::bootstrap-5')}}
                 </tbody>
 
 

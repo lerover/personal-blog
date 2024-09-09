@@ -122,7 +122,7 @@
                 <small>{{date("d-M-Y", strtotime($post->created_at))}} </small>
                 <p><strong>{{$post->title}}</strong></p>
                 <P>
-                  {{$post->content}}
+                  {{substr($post->content,0,100)}}<span> .........</span>
                 </P>
               </div>
             </a>
