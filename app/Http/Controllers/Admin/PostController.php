@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::paginate(3);
+        $posts = Post::paginate(7);
         return view("admin-panel.post.index",compact("posts"));
     }
 
@@ -27,7 +27,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("admin-panel/post/create", compact("categories"));  
+        return view("admin-panel/post/create", compact("categories"));
     }
 
     /**
@@ -57,21 +57,21 @@ class PostController extends Controller
 
         return redirect("admin/posts")->with("successMsg","You've successfully added one!!");
 
-          
+
     }
 
     /**
      * Display the specified resource.
      */
     public function show($id)
-    {   
+    {
         $comments = Comment::where("post_id",$id)->get();
         return view('admin-panel.post.comment',compact('comments'));
     }
 
 
     public function showHideComment($id){
-        $comment = Comment::findOrFail($id);    
+        $comment = Comment::findOrFail($id);
 
         $comment->status === 'show' ? $comment->update(['status'=> 'hide']) : $comment->update(['status'=> 'show']);
         return back();

@@ -2,7 +2,7 @@
 @section('title', 'Student Count')
 @section('content')
 <div class="row">
-    <h4 class="col-md-10">Student Count</h4>
+    <h4 class="col-md-10">Registered User Count</h4>
 
 </div>
 <div class="container-fluid">
@@ -29,7 +29,7 @@
                 <div class="input-group">
                     <input type="number" name="studentcount"
                         class="form-control @error('studentcount') is-invalid @enderror"
-                        placeholder="Input new student count">
+                        placeholder="Input new user count">
                     <button type="submit" class="btn btn-primary ">Confirm</button>
 
                 </div>
@@ -41,7 +41,7 @@
                 <thead>
                     <tr>
 
-                        <th>Student Amount</th>
+                     <th>User count</th>
                     </tr>
 
                 </thead>

@@ -43,7 +43,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user){
         if(Auth::user()->status == 'admin'){
-            return redirect('/admin/dashboard');
+            return redirect('/admin/posts');
         }else{
              $this->showLoginForm();
         }

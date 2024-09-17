@@ -91,10 +91,10 @@
 
                         <a href="{{url('admin/projects')}}">Projects</a>
 
-                        <a href="{{url('admin/studentcount')}}">Students</a>
+                        <a href="{{url('admin/studentcount')}}">Registered Users</a>
 
                         <a href="{{url('admin/categories/')}}">Post Category</a>
-                    
+
                         <a href="{{url('admin/posts/')}}">Posts</a>
                     </div>
 
